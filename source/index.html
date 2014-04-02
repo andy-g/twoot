@@ -1,0 +1,82 @@
+<!doctype html>
+<html ng-app="twoot">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.4/angular.min.js"></script>
+    <script src="tweet.js"></script>
+    <link rel="stylesheet" href="tweet.css">
+  </head>
+  <body>
+    <div class="container" ng-controller="TwootCtrl">
+
+
+    <div class="page-header">
+      <h1>Twooter <small>Twitter is just so yesterday...</small></h1>
+    </div>
+      <!-- <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <h3 class="text-muted">Project name</h3>
+      </div> -->
+      
+<!--       <div class="jumbotron">
+        <h1>Tweeter</h1>
+        <p class="lead">Simply because Twitter is just so yesterday...</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+      </div>
+ -->
+      <div class="panel panel-default stats">
+        <div class="panel-heading">Tweet Summary</div>
+        <div class="panel-body">
+          <span>twoots <strong>{{twoots.length}}</strong></span>        
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Twoots</div>
+<!--         <div class="panel-body">
+          Panel content
+        </div>
+ -->        <ul class="list-group">
+          <li ng-repeat="twoot in twoots" class="list-group-item">{{twoot.text}}</li>
+        </ul>
+      </div>
+
+<!--       <h2>Todo</h2>
+      [ <a href="" ng-click="archive()">archive</a> ]
+      <ul class="list-unstyled">
+        <li ng-repeat="todo in todos">
+          <input type="checkbox" ng-model="todo.done">
+          <span class="done-{{todo.done}}">{{todo.text}}</span>
+        </li>
+      </ul> -->
+      <form role="form" ng-submit="addTwoot()">
+        <div class="form-group">
+        <!-- <input type="text" class="form-control"  > -->
+          <!-- <textarea class="form-control" rows="3" ng-model="todoText" placeholder="What's on your mind?"></textarea> -->
+          
+<!--           <div class="" contenteditable="true" role="textbox" dir="ltr"></div> -->
+        <!-- <input class="btn-primary" type="submit" value="add"> -->
+          <!-- <div id="twoot-box" class="twoot-box form-control" spellcheck="true" contenteditable="true" ng-model="twootText" ng-keypress="validateTwoot()"></div> -->
+          <!-- <div id="twoot-box" class="twoot-box form-control" spellcheck="true" contenteditable="true" ng-model="twootText" ng-keypress="validateTwoot()" ng-keyup="validateTwoot()"></div> -->
+          <textarea id="twoot-boxx" class="twoot-box form-control" rows="3" spellcheck="true" ng-model="twootText" placeholder="What's on your mind?"></textarea>
+        </div>
+        <!-- <pre>model = {{twootText}}</pre> -->
+        
+        <!-- <span>{{scope.twootTextChars}}</span> -->
+        <div class="twoot-button">
+          <span class="twoot-char-count" ng-class="{warn: (twootText.length >= 120), superwarn: (twootText.length >= 130)}">{{140 - twootText.length}}</span>
+          <button type="submit" class="btn btn-info" ng-class="{disabled: (twootText.length > 140)}">Send Twoot</button>
+        </div>
+        <!-- <button type="submit" class="btn btn-info" ng-class="{disabled: invalid}">Send Twoot</button> -->
+      </form>
+
+      <!-- <span>{{remaining()}} of {{todos.length}} remaining</span> -->
+    </div>
+  </body>
+</html>

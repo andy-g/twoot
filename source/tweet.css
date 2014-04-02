@@ -1,0 +1,82 @@
+
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.container {
+	max-width: 730px;
+}
+
+.stats .panel-body {
+	text-transform: uppercase;
+	font-size:10px;
+	color: #8899a6;
+	font-family: Arial,sans-serif;
+}
+
+.stats strong {
+	color: #2FC2EF;
+	display:block;
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 22px;
+}
+
+form button{
+	float: right;
+}
+
+.twoot-box{
+	display: block;
+	overflow-y: auto;
+	word-wrap: break-word;
+	/*border: 1px solid rgba(47,194,239,0.25);*/
+	/*width: auto;*/
+	height: 80px;
+	padding: 8px;
+	vertical-align: top;
+	overflow: hidden;
+	text-shadow: none;
+/*	transition-property: background;
+	transition-duration: 0.2s;
+	transition-timing-function: linear;
+	transition-delay: initial;
+*/	font-size: 13px;
+	line-height: 20px;
+	resize: none; 
+}
+
+.twoot-button{
+	float:right;
+	display: block;
+}
+
+.twoot-button .btn{
+	float:none;
+}
+
+.twoot-char-count{
+	color: #999;
+	width: 35px;
+	display: inline-block;
+	position: relative;
+	padding 0 3px;
+	text-align: right;
+	font-size: 14px;
+	top: 2px;
+	padding: 0 5px 0 0;
+}
+
+.twoot-char-count.warn {
+	color: #5c0002;
+}
+
+.twoot-char-count.superwarn {
+	color: #d40d12;
+}
+/*:focus{
+	border-color:#ABE6F8;
+	box-shadow:none;
+	outline: 0
+};*/
