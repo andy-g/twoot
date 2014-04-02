@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="twoot">
+<html ng-app="twootApp">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -12,9 +12,9 @@
     <div class="container" ng-controller="TwootCtrl">
 
 
-    <div class="page-header">
-      <h1>Twooter <small>Twitter is just so yesterday...</small></h1>
-    </div>
+      <div class="page-header">
+        <h1>Twooter <small>Twitter is just so yesterday...</small></h1>
+      </div>
       <!-- <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="#">Home</a></li>
@@ -33,7 +33,7 @@
       <div class="panel panel-default stats">
         <div class="panel-heading">Tweet Summary</div>
         <div class="panel-body">
-          <span>twoots <strong>{{twoots.length}}</strong></span>        
+          <span>twoots <strong ng-bind="twoots.length">0</strong></span>        
         </div>
       </div>
 
@@ -43,7 +43,7 @@
           Panel content
         </div>
  -->        <ul class="list-group">
-          <li ng-repeat="twoot in twoots" class="list-group-item">{{twoot.text}}</li>
+          <li ng-repeat="twoot in twoots" class="list-group-item" ng-bind="twoot.text"></li>
         </ul>
       </div>
 
@@ -71,7 +71,7 @@
         <!-- <span>{{scope.twootTextChars}}</span> -->
         <div class="twoot-button">
           <span class="twoot-char-count" ng-class="{warn: (twootText.length >= 120), superwarn: (twootText.length >= 130)}">{{140 - twootText.length}}</span>
-          <button type="submit" class="btn btn-info" ng-class="{disabled: (twootText.length > 140)}">Send Twoot</button>
+          <button type="submit" class="btn btn-info" ng-class="{disabled: (twootText.length == 0 || twootText.length > 140)}">Send Twoot</button>
         </div>
         <!-- <button type="submit" class="btn btn-info" ng-class="{disabled: invalid}">Send Twoot</button> -->
       </form>
