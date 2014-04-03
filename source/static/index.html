@@ -44,7 +44,7 @@
           Panel content
         </div>
  -->    <ul class="list-group">
-          <li ng-repeat="twoot in twoots" class="list-group-item" ng-bind="twoot.text"></li>
+          <li ng-repeat="twoot in twoots" class="list-group-item" ng-class="{error: (twoot.status == -1), pending: (twoot.status == 0)}" ng-bind="twoot.text"></li>
         </ul>
       </div>
 

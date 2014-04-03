@@ -84,3 +84,11 @@ form button{
 .stream .list-group-item{
 	white-space: pre;
 }
+
+.stream .list-group-item.pending{
+	color: #999;
+}
+
+.stream .list-group-item.error{
+	color: #d40d12;
+}
