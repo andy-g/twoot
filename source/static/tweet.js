@@ -1,6 +1,9 @@
 var twootApp = angular.module('twootApp', ['ngResource']);
 
 twootApp.controller('TwootCtrl', function ($scope, $resource) {
+
+  $scope.twoots = [];
+
   var Twoot = $resource('/api/twoots/:twootId/',
     { twootId:'@id' }, 
     { 
@@ -10,8 +13,6 @@ twootApp.controller('TwootCtrl', function ($scope, $resource) {
 
   var twoots = Twoot.query(function() {
       $scope.twoots = twoots;
-      twoot = twoots[0];
-      twoot.created = new Date();
      });
 
   $scope.twootText = '';
@@ -20,25 +21,26 @@ twootApp.controller('TwootCtrl', function ($scope, $resource) {
     var newTwoot = new Twoot({twootId:'123'});
     newTwoot.text = $scope.twootText;
     newTwoot.created = Date.now();
-    newTwoot.$save();
+    newTwoot.status = 0; //0: sending, 1: sent, -1: error
+    newTwoot.$save(function(){ console.log('success')}, function(res){ 
+      console.log('failure');
+      console.dir(res.data.error);
+      
+      //mark item as unsent (actually update status property and have some ng-class render item appropriately (sending, sent, error))
+      var i = $scope.twoots.indexOf(newTwoot);
+      //$scope.twoots[i].text += ' unsaved!!';
+      $scope.twoots[i].status = -1;
+
+      //remove item from array
+      // var i = $scope.twoots.indexOf(newTwoot);
+      // if(i != -1) {
+      //   $scope.twoots.splice(i, 1);
+      // }
+    });
     //$scope.twoots.push({text:$scope.twootText, done:false});
     $scope.twoots.unshift(newTwoot);
     $scope.twootText = '';
   };
   
-  $scope.remaining = function() {
-    var count = 0;
-    angular.forEach($scope.twoots, function(twoot) {
-      count += twoot.done ? 0 : 1;
-    });
-    return count;
-  };
  
-  $scope.archive = function() {
-    var oldTwoots = $scope.twoots;
-    $scope.twoots = [];
-    angular.forEach(oldTwoots, function(twoot) {
-      if (!twoot.done) $scope.twoots.push(twoot);
-    });
-  };
 });
