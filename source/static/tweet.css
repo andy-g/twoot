@@ -80,3 +80,7 @@ form button{
 	box-shadow:none;
 	outline: 0
 };*/
+
+.stream .list-group-item{
+	white-space: pre;
+}
