@@ -25,6 +25,7 @@
     "url": ""
   },
   "dependencies": {
+    "url": "0.7.9",
     "express": "3.x",
     "redis": "0.10.x"
   },
