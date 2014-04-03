@@ -1,7 +1,15 @@
 var	express = require('express');
 
-var redis = require("redis"),
-	client = redis.createClient();
+var redis = require("redis");
+//For Heroku
+var url = require('url');
+var redisURL = url.parse(process.env.REDISCLOUD_URL);
+var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+client.auth(redisURL.auth.split(":")[1]);
+
+//local
+//var client = redis.createClient();
+
 client.retry_max_delay = 5000;
 
 client.on("error", function (err) {
