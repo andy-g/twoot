@@ -2,10 +2,12 @@ var	express = require('express');
 
 var redis = require("redis");
 //For Heroku
+var logfmt = require("logfmt");
 var url = require('url');
 var redisURL = url.parse(process.env.REDISCLOUD_URL);
 var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 client.auth(redisURL.auth.split(":")[1]);
+app.use(logfmt.requestLogger());
 
 //local
 //var client = redis.createClient();
@@ -58,5 +60,10 @@ function saveTwoot(req, res) {
 	});
 };
 
-app.listen(3000);
-console.log('Listening on 3000');
+// app.listen(3000);
+// console.log('Listening on 3000');
+
+var port = Number(process.env.PORT || 5000);
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
