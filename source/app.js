@@ -1,7 +1,16 @@
-var	express = require('express');
+var	express = require('express'),
+	redis = require("redis"),
+	client;
 
-var redis = require("redis"),
+if (process.env.REDISCLOUD_URL) { //For Heroku
+	var url = require('url');
+	var redisURL = url.parse(process.env.REDISCLOUD_URL);
+	client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+	client.auth(redisURL.auth.split(":")[1]);
+} else {
 	client = redis.createClient();
+}
+
 client.retry_max_delay = 5000;
 
 client.on("error", function (err) {
@@ -14,11 +23,8 @@ var app = express();
 app.use(express.urlencoded());
 app.use(express.json());
 app.use(express.static(__dirname + '/static'));
-
-//app.get('/', function(req, res){ res.send(); });
 app.get('/api/twoots/:twootId?', twoots);
 app.post('/api/twoots/:twootId?', saveTwoot);
-
 
 function twoots(req, res) {
 	var twootId = req.param('twootId');
@@ -33,7 +39,6 @@ function twoots(req, res) {
 		}
 	});
 };
-
 
 function saveTwoot(req, res) {
 	var twoot = req.body;
@@ -50,5 +55,7 @@ function saveTwoot(req, res) {
 	});
 };
 
-app.listen(3000);
-console.log('Listening on 3000');
+var port = Number(process.env.PORT || 3000);
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
