@@ -12,8 +12,10 @@
       "email": "andyg80@gmail.com"
     }
   ],
+  "subdomain": "ignitionroom",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "start": "app.js"
   },
   "repository": {
     "type": "git",
