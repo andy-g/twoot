@@ -25,6 +25,7 @@ app.use(express.json());
 app.use(express.static(__dirname + '/static'));
 app.get('/api/twoots/:twootId?', twoots);
 app.post('/api/twoots/:twootId?', saveTwoot);
+app.get('/api/cleartwoots', clearTwoots);
 
 function twoots(req, res) {
 	var twootId = req.param('twootId');
@@ -53,6 +54,19 @@ function saveTwoot(req, res) {
 	res.json(twoot);
 		}
 	});
+};
+
+function clearTwoots(req, res) {
+	client.del(user, function(error, data){
+		if (!!error){
+			console.dir(error);
+			res.json(500, {"error" : "There was an error clearing twoots, please retry later."});
+		}else{
+			console.dir("Twoots cleared");
+			res.json({"status": "Twoots cleared successfully"});	
+		}
+	});
+	//res.json(twoot);
 };
 
 var port = Number(process.env.PORT || 3000);
