@@ -12,6 +12,11 @@
 
 <body>
     <div class="container" ng-controller="TwootCtrl">
+        <?php
+            if (count($errors) > 0){
+                echo '<div class="alert alert-danger">'.Arr::get($errors, 'twootText').'</div>';
+            }
+        ?>
         <div class="page-header">
             <h1>Twooter
                 <small>'cause twitter's just so yesterday...</small>
@@ -26,13 +31,14 @@
             </div>
         </div>
 
-        <form role="form" ng-submit="addTwoot()">
+        <form role="form" method="post" action="/twoot/">
             <div class="form-group">
-                <textarea id="twoot-box" class="twoot-box form-control" rows="3" spellcheck="true" ng-model="twootText" placeholder="What's on your mind?"></textarea>
+                <textarea id="twootText" name="twootText" class="twoot-box form-control" rows="3" spellcheck="true" ng-model="twootText" placeholder="What's on your mind?"><?php echo $twootText ?></textarea>
             </div>
             <div class="twoot-button">
                 <span class="twoot-char-count" ng-class="{warn: (twootText.length >= 120), superwarn: (twootText.length >= 130)}">{{140 - twootText.length}}</span>
-                <button type="submit" class="btn btn-info" ng-class="{disabled: (twootText.length == 0 || twootText.length > 140)}">Send Twoot</button>
+                <!-- <button type="submit" class="btn btn-info" ng-class="{disabled: (twootText.length == 0 || twootText.length > 140)}">Send Twoot</button> -->
+                <button type="submit" class="btn btn-info">Send Twoot</button>
             </div>
         </form>
 

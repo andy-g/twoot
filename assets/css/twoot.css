@@ -97,3 +97,7 @@ form button{
 .stream .list-group-item.error{
 	color: #d40d12;
 }
+
+.alert{
+	margin: 10px 0 -15px 0px;
+}

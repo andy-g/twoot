@@ -4,20 +4,18 @@ twootApp.controller('TwootCtrl', function ($scope, $resource) {
 
   $scope.twoots = [];
 
-  document.getElementById('twoot-box').focus()
+  document.getElementById('twootText').focus();
+  $scope.twootText = document.getElementById('twootText').value;
 
-  // var Twoot = $resource('/api/twoots/:twootId/',
-  //   { twootId:'@id' }, 
-  //   { 
-  //     charge: { method:'POST', params:{ charge:true } }
-  //   }
-  // );
+  var Twoot = $resource('/api/twoots/:twootId/',
+    { twootId:'@id' }
+  );
 
   // var twoots = Twoot.query(function() {
   //     $scope.twoots = twoots;
   //    });
 
-  $scope.twootText = '';
+  //$scope.twootText = '';
 
   $scope.addTwoot = function() {
     var newTwoot = new Twoot({twootId:'123'});
