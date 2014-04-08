@@ -30,7 +30,7 @@
         <form role="form" ng-submit="addTwoot()">
             <div class="form-group">
                 <!-- <div id="twoot-box" class="twoot-box form-control" spellcheck="true" contenteditable="true" ng-model="twootText" ng-keypress="validateTwoot()"></div> -->
-                <textarea id="twoot-boxx" class="twoot-box form-control" rows="3" spellcheck="true" ng-model="twootText" placeholder="What's on your mind?"></textarea>
+                <textarea id="twoot-box" class="twoot-box form-control" rows="3" spellcheck="true" ng-model="twootText" placeholder="What's on your mind?"></textarea>
             </div>
             <div class="twoot-button">
                 <span class="twoot-char-count" ng-class="{warn: (twootText.length >= 120), superwarn: (twootText.length >= 130)}">{{140 - twootText.length}}</span>

@@ -3,6 +3,7 @@ var twootApp = angular.module('twootApp', ['ngResource']);
 twootApp.controller('TwootCtrl', function ($scope, $resource) {
 
   $scope.twoots = [];
+  document.getElementById('twoot-box').focus();
 
   var Twoot = $resource('/api/twoots/:twootId/',
     { twootId:'@id' }, 
