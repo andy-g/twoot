@@ -87,7 +87,7 @@ form button{
 }
 
 .stream .list-group-item{
-	white-space: pre;
+	white-space: pre-wrap;
 }
 
 .stream .list-group-item.pending{

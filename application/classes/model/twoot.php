@@ -28,23 +28,4 @@ class Model_Twoot extends ORM
 			->order_by('createdAt', 'DESC')
 			->find_all();
 	}
-
-	//    public function rules()
-	// {
-	// 	return array(
-	// 		'username' => array(
-	// 			// Uses Valid::not_empty($value);
-	// 			array('not_empty'),
-	// 			// Calls Some_Class::some_method('param1', 'param2');
-	// 			array('Some_Class::some_method', array('param1', 'param2')),
-	// 			// Calls A_Class::a_method($value);
-	// 			array(array('A_Class', 'a_method')),
-	// 			// Calls the lambda function and passes the field value and the validation object
-	// 			array(function($value, Validation $object)
-	// 			{
-	// 				$object->error('some_field', 'some_error');
-	// 			}, array(':value', ':validation')),
-	// 		),
-	// 	);
-	// }
 }

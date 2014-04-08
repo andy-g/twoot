@@ -37,8 +37,7 @@
             </div>
             <div class="twoot-button">
                 <span class="twoot-char-count" ng-class="{warn: (twootText.length >= 120), superwarn: (twootText.length >= 130)}">{{140 - twootText.length}}</span>
-                <!-- <button type="submit" class="btn btn-info" ng-class="{disabled: (twootText.length == 0 || twootText.length > 140)}">Send Twoot</button> -->
-                <button type="submit" class="btn btn-info">Send Twoot</button>
+                <button type="submit" class="btn btn-info" ng-class="{disabled: (twootText.length == 0 || twootText.length > 140)}">Send Twoot</button>
             </div>
         </form>
 
